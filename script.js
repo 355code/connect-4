@@ -23,7 +23,6 @@ function gameLogic(gameSize) {
         column++
         GAME.push(gridBox)
     }
-    console.log(GAME)
 }
 
 function createGame(columns, rows) {
@@ -104,6 +103,7 @@ function dropPiece(gridBox) {
             newPiece.style.zIndex = '-1';
 
             const handleClick = ()=>{
+                gridBox.removeEventListener('click', handleClick)
                 ANIMATING = true;
                 let tempPieceColor = PIECE_COLOR;
                 if (PIECE_COLOR === 'red') {
@@ -118,15 +118,13 @@ function dropPiece(gridBox) {
                 ]
 
                 let options = {
-                    duration: 2000
+                    duration: 1000
                 }
                 newPiece.animate(keyframes, options);
 
                 const columnArray = GAME.filter((gridBox)=> gridBox.column === currentColumn);
                 for(let i = 5; i >= 0; i--){
-                    console.log(columnArray)
                     if(columnArray[i].color === 'blank'){
-                        console.log(columnArray[i].color)
                         const id = columnArray[i].id
                         GAME[id].color = tempPieceColor;
                         setTimeout(()=>{
@@ -134,13 +132,12 @@ function dropPiece(gridBox) {
                             gridBoxHoleToUpdate.style.backgroundColor = tempPieceColor;
                             background.removeChild(newPiece);
                             ANIMATING = false;
-                        },i*350)
+                        },i*170)
                         
                         return
                     }
                 }
 
-                console.log(PIECE_COLOR)
             }
 
             gridBox.addEventListener('mouseout', () => {

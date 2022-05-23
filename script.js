@@ -1,4 +1,4 @@
-let GRID_SIZE = 45;
+let GRID_SIZE = 30;
 let PIECE_COLOR = 'red';
 let GAME = [];
 let ANIMATING = false;
@@ -72,12 +72,12 @@ function createGame(columns, rows) {
         const gridBoxHole = document.createElement('div');
         const gridBoxHoleStyles = {
             backgroundColor: 'rgba(255, 255, 255, 0)',
-            transform: `translate(-${GRID_SIZE / 4}px,-${GRID_SIZE / 4}px)`,
+            transform: `translate(-${GRID_SIZE / 3}px,-${GRID_SIZE / 3}px)`,
             border: 'solid',
             color: 'blue',
-            borderWidth: '20px',
-            height: '30px',
-            width: '30px',
+            borderWidth: `${GRID_SIZE/2}px`,
+            height: `${GRID_SIZE*2/3}px`,
+            width: `${GRID_SIZE*2/3}px`,
             textAlign: 'center',
             borderRadius: '50%'
 
@@ -167,8 +167,8 @@ function createPiece(gridBox, color) {
         top: startY - 20 + 'px',
         left: startX + GRID_SIZE / 6 + 'px',
         border: 'solid',
-        height: '30px',
-        width: '30px',
+        height: `${GRID_SIZE*2/3}px`,
+        width: `${GRID_SIZE*2/3}px`,
         textAlign: 'center',
         borderRadius: '50%',
         backgroundColor: color,
